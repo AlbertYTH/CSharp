@@ -24,7 +24,14 @@ namespace DocMerge
             }
 
             file.Close();
-          
+            System.IO.StreamReader file2 = new System.IO.StreamReader("C:/Users/Albert/Desktop/敏捷軟體/Git/CSharp/vs2013-csharp-sample/DocMerge/template.txt");
+            while ((line = file2.ReadLine()) != null)
+            {
+                Console.WriteLine(line);
+                counter++;
+            }
+
+            file.Close();
             Console.ReadLine();
             
             
