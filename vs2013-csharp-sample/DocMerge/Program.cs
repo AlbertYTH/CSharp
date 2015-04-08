@@ -12,7 +12,7 @@ namespace DocMerge
         {
 
 
-            int counter = 0;
+            int counter = 0,template_len=0;
             string data_txt = "aa", template_txt = "cc";
             string[] data_list = { };
             List<string> template_txt_copy = new List<string>();
@@ -27,6 +27,8 @@ namespace DocMerge
                 template_txt_copy.Add(template_txt);
                 counter++;
             }
+            template_len = counter;
+            //Console.WriteLine(template_len);
             template_file.Close();
 
             /*foreach (string s in result_txt)
@@ -42,10 +44,10 @@ namespace DocMerge
             {
                 //Console.WriteLine(data_txt);
                 data_list = data_txt.Split(delimiterChars);
-                string[] result_txt = new string[4];
-                for (int i = 0; i < 4; i++)
+                string[] result_txt = new string[template_len];
+                for (int i = 0; i < template_len; i++)
                     result_txt[i] = template_txt_copy[i];
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < template_len; i++)
                 { 
                     result_txt[i] = result_txt[i].Replace("${中文姓名}", data_list[0]);
                     result_txt[i] = result_txt[i].Replace("${身份證字號}", data_list[1]);
@@ -53,7 +55,7 @@ namespace DocMerge
                 }
                 //foreach (string s in result_txt)
                 //    Console.WriteLine(s);
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < template_len; i++)
                 {
                     file.WriteLine(result_txt[i]);
                     Console.WriteLine(result_txt[i]);
